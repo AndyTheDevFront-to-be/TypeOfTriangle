@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+	<link rel="stylesheet" href="http://d5wfroyti11sa.cloudfront.net/prod/client/ts-11.1.0.min.css"/>
+	<link rel="stylesheet" href="css/style.css"/>
+	<script src="http://d5wfroyti11sa.cloudfront.net/prod/client/ts-11.1.0.min.js"></script>
+	
+</head>
+<body>
+	<header data-ts="TopBar"></header>
+	<main data-ts="Main">
+		<div data-ts="MainContent">
+			<article>
+				<h1>Type of triangle program</h1>
+				<form data-ts="Form">
+					<fieldset>
+						<label>
+							<span> First value </span>
+							<input type="number" name="first_value" onClick="{this.value=''}" id="first_value"/>
+						</label>
+						<label>
+							<span> Second value </span>
+							<input type="number" name="second_value" onClick="{this.value=''}" id="second_value"/>
+						</label>
+						<label>
+							<span> Third value </span>
+							<input type="number" name="third_value" onClick="{this.value=''}" id="third_value"/>
+						</label>
+					</fieldset>
+					<button data-ts="Button" class="ts-secondary" onclick="typeOfTriangle()">Define your triangle</button>
+				</form>
+			</article>
+		</div>
+	</main>
+</body>
+<script type="text/javascript">
+		function typeOfTriangle(){
+			let x = document.getElementById("first_value").value;
+			let y = document.getElementById("second_value").value;
+			let z = document.getElementById("third_value").value;
+			//console.log(typeof(x));
+		    let triangleType;
+		    let message="This triangle is";
+		    if(!isNaN(x) && !isNaN(y) && !isNaN(z) && x!=0 && y!=0 && z!=0){
+		        if(x==y && y==z && x==z){
+		           triangleType = "equilateral";
+		           //console.log(triangleType);
+			        }else if(x==y || y==z || z==x){
+			           triangleType = "isosceles";
+			           //console.log(triangleType);
+				        }else{
+					           triangleType = "scalene";
+					           //console.log(triangleType);  
+					        }
+			ts.ui.Notification.info(message + ' ' + triangleType);
+		    }else{
+		        ts.ui.Notification.error('Enter a number non null, please.');
+		    }
+		}
+	</script>
+</html>
